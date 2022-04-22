@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.IO;
 using System.Reflection;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
@@ -17,7 +18,8 @@ namespace SpecFlowTests
         [BeforeTestRun]
         public static void InitializeReport()
         {
-            var htmlReporter = new ExtentHtmlReporter(@"//Users//vaibhavk//Projects//SpecFlowTests//SpecFlowTests");
+            string path = Directory.GetCurrentDirectory();
+            var htmlReporter = new ExtentHtmlReporter(path);
 
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
